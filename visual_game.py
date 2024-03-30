@@ -1,5 +1,6 @@
 """Крестики - нолики."""
 import pygame
+
 from gameparts import Board
 
 pygame.init()
@@ -98,7 +99,7 @@ def save_result(result: str) -> None:
 
 
 def main() -> None:
-    """Функция запускается игровой цикл."""
+    """Функция запускает игровой цикл."""
     game = Board()
     # Первым ходить крестик.
     current_player: str = 'X'
@@ -110,7 +111,7 @@ def main() -> None:
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running: bool = False
+                running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_y = event.pos[0]
                 mouse_x = event.pos[1]
@@ -124,13 +125,13 @@ def main() -> None:
                         winner: str = f'Победители {current_player}!'
                         print(winner)
                         save_result(winner)
-                        running: bool = False
+                        running = False
                     # проверить на ничью,
                     elif game.is_board_full():
                         nobody: str = 'Ничья'
                         print(nobody)
                         save_result(nobody)
-                        running: bool = False
+                        running = False
                     # сменить игрока.
                     current_player = 'O' if current_player == 'X' else 'X'
                     draw_figures(game.board)
